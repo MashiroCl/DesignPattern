@@ -1,4 +1,5 @@
 #套餐订单
+
 from FastFoodShop.food import *
 from copy import copy
 class order():
@@ -33,11 +34,11 @@ class orderBuilder():
         return order(self)
 
 if  __name__=="__main__":
-    # pizza_factory = pizzaFactory()
-    # snack_factorry = snackFactory()
-    # drink_factory = drinkFactory()
-    # cheese_burger = pizza_factory.createFood(BeefPizza)
-    # print(cheese_burger.getName(), cheese_burger.getPrice())
+    pizza_factory = pizzaFactory()
+    snack_factorry = snackFactory()
+    drink_factory = drinkFactory()
+    beef_pizza = pizza_factory.createFood(BeefPizza)
+    print(beef_pizza.getName(),beef_pizza.getPrice())
 
     order_builder=orderBuilder()
     order_builder.addPizza(BeefPizza())
@@ -47,3 +48,5 @@ if  __name__=="__main__":
     order_1.show()
     order_2=order_1.anotherSameOrder()
     order_2.show()
+    dic={'order':order_1}
+    print(dic['order'].pizza.getName())

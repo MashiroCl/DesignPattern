@@ -77,4 +77,3 @@ def home(request):
     return HttpResponse('customer.html')
 
 
-#商家界面
