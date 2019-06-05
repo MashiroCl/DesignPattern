@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.forms import forms
-from django.shortcuts import render
 from django.http import JsonResponse
+from django.shortcuts import render_to_response, render
 import sqlite3
 from django.http import HttpResponse
 # Create your views here.
@@ -63,7 +63,7 @@ def signCheck(request):
 
 
     #普通用户成功登录
-    return HttpResponse("customer.html")
+    return HttpResponse("user.html")
 '''
         用户界面能进行的操作：
         1.选择pizza,snack,drink用OrderList.py里的add函数来组成一个套餐
@@ -73,7 +73,8 @@ def signCheck(request):
 def index(request):
     return HttpResponse('牵牛花与加濑同学')
 
-def home(request):
-    return HttpResponse('customer.html')
+
+def customerPage(request):
+    return render_to_response('user.html')
 
 

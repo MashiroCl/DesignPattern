@@ -1,0 +1,5 @@
+.big_border{
+    border-style: solid; border-width: 3px;
+    float:left;
+    width: 420px;
+}

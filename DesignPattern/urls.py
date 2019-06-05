@@ -16,6 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+import OnlineFastFood.views
+import OnlineFastFood.customerEnd
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/',OnlineFastFood.views.customerPage),
+    path('commit/', OnlineFastFood.customerEnd.commit),
+
 ]

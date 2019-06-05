@@ -65,6 +65,7 @@ class foodFactory():
         food=foodClass()
         return food
 class pizzaFactory(foodFactory):
+
     def __init__(self):
         self.type="Pizza"
 class snackFactory(foodFactory):
