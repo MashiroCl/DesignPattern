@@ -23,5 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/',OnlineFastFood.views.customerPage),
     path('commit/', OnlineFastFood.customerEnd.commit),
+    path('host/',OnlineFastFood.views.admin_data),
+
 
 ]

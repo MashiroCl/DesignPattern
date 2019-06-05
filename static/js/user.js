@@ -96,8 +96,6 @@
 
         data[key]=value;
 
-
-
         key="chick_wing";
         obj=document.getElementsByName(key);
         value=0;
@@ -118,7 +116,9 @@
         // for(var i=0;i<array.length;i++){
         //     alert(array[i].Key+array[i].Value);
         // }
-
+        obj=document.getElementById("phone").value;
+        key="phone";
+        data[key]=obj;
 
        var postData =  JSON.stringify(data);
 

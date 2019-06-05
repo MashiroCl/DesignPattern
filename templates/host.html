@@ -1,0 +1,124 @@
+<!DOCTYPE html >
+<head>
+    <title> new document </title>
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="../static/js/host.js"></script>
+    <style type="text/css">
+        @import "../static/css/host.css";
+    </style>
+</head>
+<body>
+
+
+<div align="center" >
+
+    <div align="center" id="div0" style="display: none" class="dingdan">
+        <p id="div0p">111<br/>fea</p>
+        <button onclick="cclick_btn0()"  class="btn" >派送通知</button>
+        <button onclick="cclick_btn0()"  class="btn" >信息联系</button>
+        <button onclick="cclick_btn0()"  class="btn" >电话联系</button>
+        <button onclick="cclick_btn0()"  class="btn" >通知后厨</button>
+    </div>
+
+    <div align="center" id="div1" style="display: none;margin-top: 2px;" class="dingdan" >
+        <p id="div1p">122</p>
+        <button  onclick="cclick_btn1()" class="btn" >派送通知</button>
+        <button  onclick="cclick_btn1()" class="btn" >信息联系</button>
+        <button  onclick="cclick_btn1()" class="btn" >电话联系</button>
+        <button  onclick="cclick_btn1()" class="btn" >通知后厨</button>
+    </div>
+
+    <div align="center" id="div2" style="display: none;margin-top: 2px;" class="dingdan">
+        <p id="div2p" >122</p>
+        <button  onclick="cclick_btn2()" class="btn" >派送通知</button>
+        <button  onclick="cclick_btn2()" class="btn" >信息联系</button>
+        <button  onclick="cclick_btn2()" class="btn" >电话联系</button>
+        <button  onclick="cclick_btn2()" class="btn" >通知后厨</button>
+    </div>
+
+    <button onclick="cclick()">测试按钮</button>
+
+
+
+
+
+
+</div>
+<script>var List={{data|safe}};
+for(var key in List){
+    alert(key);
+    alert(List[key]);
+}
+
+var flag0 = false;
+var flag1 = false;
+var flag2 = false;
+var phone_number0;
+var phone_number1;
+var phone_number2;
+//alert(flag0);
+for (var key in List) {
+    // alert(flag0==false);
+    // if(1==1)alert("www0");
+                var phone_number = key;
+                var ttext = List[key];
+                if (flag0 == false) {
+                   // alert("fea");
+                    phone_number0 = phone_number;
+                    var div0 = document.getElementById("div0");
+                    div0.style.display = "block";
+
+                    var div0p = document.getElementById("div0p");
+
+                    div0p.innerHTML = ttext;
+                    alert(div0p.innerText);
+                    flag0 = true;
+
+                } else if (flag1 == false) {
+                    phone_number1 = phone_number;
+
+                    var div1 = document.getElementById("div1");
+                    div1.style.display = "block";
+
+                    var div1p = document.getElementById("div1p");
+
+                    div1p.innerHTML = ttext;
+                    flag1 = true;
+
+                } else {
+                    phone_number2 = phone_number;
+
+                    var div2 = document.getElementById("div2");
+                    div2.style.display = "block";
+
+                    var div2p = document.getElementById("div2p");
+
+                    div2p.innerHTML = ttext;
+                    flag2 = true;
+
+                }
+            }
+
+
+</script>
+
+</body>
+<!--<script type="text/javascript">-->
+<!--    var btn=document.getElementById("butn");-->
+<!--    btn.onclick=function(){-->
+<!--        var div1=document.getElementById("div1");-->
+<!--        var div2=document.getElementById("div2");-->
+
+<!--        var style2=window.getComputedStyle(div2);-->
+<!--        div2.style.display=style2.display=="none"?"block":"none";-->
+
+<!--        if(style2.display=="none"){-->
+<!--            div1.innerHTML="隐藏了";-->
+<!--            btn.value="显示";-->
+<!--        }else{-->
+<!--            div1.innerHTML="显示了";-->
+<!--            btn.value="隐藏";-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+</html>

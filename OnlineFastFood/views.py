@@ -1,9 +1,11 @@
 from django.http import HttpResponse
-from django.forms import forms
 from django.http import JsonResponse
+import json
 from django.shortcuts import render_to_response, render
 import sqlite3
 from django.http import HttpResponse
+import DataBase
+
 # Create your views here.
 DB_path="E:/Pycharm/workspace/style_change_web/user.db"
 
@@ -53,7 +55,7 @@ def signCheck(request):
 
     # 是商家
     if(username=="ADMIN" and password=="ADMIN"):
-        return HttpResponse("admin.html")
+       admin_data()
     '''
         商家界面能进行的操作：
         1.有单子的时候可以确认接单 接单后会以行的形式显示，行的右端有按钮：通知后厨 进行派送
@@ -76,5 +78,16 @@ def index(request):
 
 def customerPage(request):
     return render_to_response('user.html')
+
+def admin_data(request):
+    temp=DataBase.show_orderList()
+    order_num=len(temp)
+    dict={}
+    for i in range(order_num):
+        dict[temp[i][1]]=temp[i][0]
+    dict=json.dumps(dict)
+    print("admin_data ",dict)
+    return render(request, 'host.html', {'data': dict})
+
 
 

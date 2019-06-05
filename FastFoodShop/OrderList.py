@@ -17,7 +17,7 @@ class order():
         print("Pizza:%s"%self.pizza.getName())
         print("Snack:%s"%self.snack.getName())
         print("Drink:%s"%self.drink.getName())
-
+        return self.pizza.getName()+self.snack.getName()+self.drink.getName()
 
 class orderBuilder():
     bPizza=""

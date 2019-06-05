@@ -1,23 +1,26 @@
 from FastFoodShop import  OrderList
 from FastFoodShop import  infoSystem
 from FastFoodShop import  acceptOrder
+from OnlineFastFood import customerEnd
 import json
 
-def inform_kitchen(request):
-    #通知后厨的部分就在后台输出当作通知
-    order=request.GET.get('data')
+def json_to_dict(order):
     order_dict=json.loads(s=order)
     milk=order_dict["milk"]
-
-    print(milk)
+    phone=order_dict['phone']
     beef_pizza=order_dict["beef_pizza"]
     coke=order_dict["coke"]
     fries=order_dict["chip"]
     chick_pizza=order_dict["chick_pizza"]
     chicken_wing=order_dict["chick_wing"]
-    #
-    # #获得用户的信息
-    # # # phone=request.GET.get('')
+    return milk,phone,beef_pizza,coke,fries,chick_pizza,chicken_wing
+
+
+def inform_kitchen(request):
+    #通知后厨的部分就在后台输出当作通知
+    
+    order=customerEnd.temp_order
+    milk, phone, beef_pizza, coke, fries, chick_pizza, chicken_wing = json_to_dict(order)
 
 
     pizza_factory = OrderList.pizzaFactory()
@@ -79,12 +82,13 @@ def inform_kitchen(request):
     print(drink)
 
 def inform_customer(request):
-    #获得用户的用户名，电话号码
-    username=request.GET.get('')
+    #获得用户的电话号码
+    order = request.GET.get('data')
+    milk, phone, beef_pizza, coke, fries, chick_pizza, chicken_wing = json_to_dict(order)
 
     customer_x=infoSystem.customer.customer()
-    customer_x.setName("CUSTOMER_X")
-    customer_x.setPhone("10023456789")
+    customer_x.setName("CUSTOMER")
+    customer_x.setPhone(phone=phone)
 
     #信息通知用户
     customer_x.setInfo("Welcome to our new party!")
@@ -99,8 +103,11 @@ def inform_customer(request):
 
 
 def inform_takefood(request):
+    order = request.GET.get('data')
+    phone=order['phone']
+    temp_phone=phone[-4:]
     ready_to_deliver=acceptOrder.ReadyToDeliver()
-    ready_to_deliver.runAll(1,2,"jojo")
+    ready_to_deliver.runAll(1,2,"尾号为"+temp_phone+" 请取餐")
 
 
 
