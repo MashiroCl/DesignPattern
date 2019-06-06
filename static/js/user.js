@@ -1,15 +1,10 @@
-
-
-    function ObjData(key,value){
-        this.Key=key;
-        this.Value=value;
-    }
-
-
-
+var tttext0="请输入手机号码";
+var tttext1="";
+    function ccclick(){
+    document.getElementById("phone").value = tttext1;
+}
+    //删除ObjData相关
     function cclick(){
-
-        var array=[];
         var data={};
         var key="milk";
         obj=document.getElementsByName(key);
@@ -26,8 +21,6 @@
         else{
             value=0;
         }
-        var s=new ObjData(key,value); //创建键值对象
-        array.push(s); //把对象放入对象数组中
 
         data[key]=value;
 
@@ -43,8 +36,6 @@
         else{
             value=0;
         }
-        s=new ObjData(key,value); //创建键值对象
-        array.push(s); //把对象放入对象数组中
 
         data[key]=value;
 
@@ -61,8 +52,6 @@
         else{
             value=0;
         }
-        s=new ObjData(key,value); //创建键值对象
-        array.push(s); //把对象放入对象数组中
 
         data[key]=value;
 
@@ -75,8 +64,8 @@
         else{
             value=0;
         }
-        s=new ObjData(key,value); //创建键值对象
-        array.push(s); //把对象放入对象数组中
+
+
 
         data[key]=value;
 
@@ -91,8 +80,7 @@
         else{
             value=0;
         }
-        s=new ObjData(key,value); //创建键值对象
-        array.push(s); //把对象放入对象数组中
+
 
         data[key]=value;
 
@@ -105,20 +93,17 @@
         else{
             value=0;
         }
-        s=new ObjData(key,value); //创建键值对象
-        array.push(s); //把对象放入对象数组中
+
 
         data[key]=value;
 
 
 
-        // alert(array);
-        // for(var i=0;i<array.length;i++){
-        //     alert(array[i].Key+array[i].Value);
-        // }
         obj=document.getElementById("phone").value;
         key="phone";
         data[key]=obj;
+
+    alert("hello");
 
        var postData =  JSON.stringify(data);
 
@@ -132,7 +117,7 @@
                 alert(flag)
             }
         })//通过设置traditional属性为true直接传递数组 */
-
+    alert("7878");
 
 
 

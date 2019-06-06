@@ -1,57 +1,59 @@
-from django.http import HttpResponse
-from django.http import JsonResponse
 import json
 from django.shortcuts import render_to_response, render
 import sqlite3
 from django.http import HttpResponse
 import DataBase
+from django.shortcuts import redirect  #重新定向模块
 
-# Create your views here.
 DB_path="E:/Pycharm/workspace/style_change_web/user.db"
 
 
 def register(request):
-    return HttpResponse('register.html')
+    return render_to_response('register.html')
 
 def registerCheck(request):
-    username=request.POST.get('username')
-    password=request.POST.get('password')
+    data=request.GET.get("data")
+    sdata=json.loads(s=data)
+    username=sdata["username"]
+    password=sdata["password"]
+    phone=sdata["phone"]
+
+    print(username)
+    print(password)
+    print(phone)
+
     conn = sqlite3.connect('user.db')
-    c=conn.cursor()
-    cursor = c.execute("select * from user where username='%s'" % (username))
-    # 用户名已被注册
-    if (len(list(cursor)) != 0):
-         return HttpResponse('')                #注册界面显示用户名已经被注册
-    else:
-        c.execute("insert into USER(username,password) VALUES ('%s','%s')"%(username,password))
-        conn.commit()
-    conn.close()
-    return HttpResponse('sign.html')
+    DataBase.insert_user(username,password,phone)
+    return redirect('http://127.0.0.1:8000/sign.html')
 
 def sign(request):
-    return HttpResponse('sign.html')
+    return render_to_response('sign.html')
 
 def signCheck(request):
-    username=request.POST.get('')   #label needed
-    password = request.POST.get('')  # label needed
-    db=sqlite3.connect(DB_path)
-    c=db.cursor()
+    data=request.GET.get("data")
+    sdata=json.loads(s=data)
+    username=sdata["username"]
+    password=sdata["password"]
+    print(username)
+    print(password)
+    # db=sqlite3.connect(DB_path)
+    # c=db.cursor()
+    #
+    #
+    # cursor = c.execute("select * from user where username='%s'" % (username))
+    # db.close()
+
+    # # 用户未注册
+    # if (len(list(cursor)) == 0):
+    #      return HttpResponse()      #缺一个登录需要注册界面
 
 
-    cursor = c.execute("select * from user where username='%s'" % (username))
-    db.close()
-
-    # 用户未注册
-    if (len(list(cursor)) == 0):
-         return HttpResponse()      #缺一个登录需要注册界面
-
-
-    #用户名与密码不匹配
-    for row in cursor:
-        _username=row[0]
-        _password=row[1]
-    if (_password != password):
-        return HttpResponse()     #缺一个密码输入错误界面
+    # #用户名与密码不匹配
+    # for row in cursor:
+    #     _username=row[0]
+    #     _password=row[1]
+    # if (_password != password):
+    #     return HttpResponse()     #缺一个密码输入错误界面
 
     # 是商家
     if(username=="ADMIN" and password=="ADMIN"):
@@ -63,9 +65,9 @@ def signCheck(request):
         3.执行acceptOrder.py里的ReadyToDeliver来进行外卖派送
     '''
 
-
+    print("lalaallalala")
     #普通用户成功登录
-    return HttpResponse("user.html")
+    return redirect("https://www.baidu.com")
 '''
         用户界面能进行的操作：
         1.选择pizza,snack,drink用OrderList.py里的add函数来组成一个套餐
@@ -73,6 +75,7 @@ def signCheck(request):
 '''
 
 def index(request):
+    print("Here is index")
     return HttpResponse('牵牛花与加濑同学')
 
 

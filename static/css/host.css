@@ -7,3 +7,9 @@
 .btn{
     border-radius:10px;
 }
+body{
+    background:url('../image/bg-01.jpg') no-repeat center center;
+    background-size:cover;
+    background-attachment:fixed;
+    background-color:#CCCCCC;
+}

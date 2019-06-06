@@ -70,11 +70,11 @@ def show_orderList():
 if  __name__=="__main__":
     # init_DB_user()
     # insert_user('ADMIN','ADMIN','11111111111')
-    # show_user("user.db")
+    show_user()
 
     # init_DB_OrderList()
     # insert_orderList("MashiroCl","1111111111")
 
-    temp=show_orderList()
-    print(temp)
-    print(len(temp))
+    # temp=show_orderList()
+    # print(temp)
+    # print(len(temp))

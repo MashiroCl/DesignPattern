@@ -2,6 +2,7 @@ from FastFoodShop import  OrderList
 from FastFoodShop import  infoSystem
 from FastFoodShop import  acceptOrder
 from OnlineFastFood import customerEnd
+from django.http import HttpResponse
 import json
 
 def json_to_dict(order):
@@ -18,8 +19,9 @@ def json_to_dict(order):
 
 def inform_kitchen(request):
     #通知后厨的部分就在后台输出当作通知
-    
-    order=customerEnd.temp_order
+    temp={"milk": 0, "beef_pizza": 2, "coke": 2, "chip": 1, "chick_pizza": 0, "chick_wing": 0, "phone": "123456789"}
+    temp_order=json.dumps(temp)
+    order=temp_order
     milk, phone, beef_pizza, coke, fries, chick_pizza, chicken_wing = json_to_dict(order)
 
 
@@ -80,11 +82,14 @@ def inform_kitchen(request):
     print(pizza)
     print(snack)
     print(drink)
+    return HttpResponse('已通知')
 
-def inform_customer(request):
-    #获得用户的电话号码
+
+def inform_text(request):
     order = request.GET.get('data')
-    milk, phone, beef_pizza, coke, fries, chick_pizza, chicken_wing = json_to_dict(order)
+    order_dict = json.loads(s=order)
+    phone=order_dict['phone_number']
+    phone=str(phone)
 
     customer_x=infoSystem.customer.customer()
     customer_x.setName("CUSTOMER")
@@ -95,24 +100,40 @@ def inform_customer(request):
     text_sender=infoSystem.textSender()
     customer_x.setBrdWay(text_sender)
     customer_x.sndMsg()
+    return HttpResponse('已通知')
 
+
+def inform_phone(request):
+    order = request.GET.get('data')
+    order_dict = json.loads(s=order)
+    phone=order_dict['phone_number']
+    phone=str(phone)
+    customer_x = infoSystem.customer.customer()
+    customer_x.setName("CUSTOMER")
+    customer_x.setPhone(phone=phone)
     #电话通知用户
     text_phone_caller=infoSystem.phoneCaller()
     customer_x.setBrdWay(text_phone_caller)
     customer_x.sndMsg()
+    return HttpResponse('已通知')
+
 
 
 def inform_takefood(request):
     order = request.GET.get('data')
-    phone=order['phone']
+    order_dict = json.loads(s=order)
+    phone=order_dict['phone_number']
+    phone=str(phone)
     temp_phone=phone[-4:]
     ready_to_deliver=acceptOrder.ReadyToDeliver()
     ready_to_deliver.runAll(1,2,"尾号为"+temp_phone+" 请取餐")
-
-
+    return HttpResponse('已通知')
 
 '''
         前端不停刷新页面
         用户commit的数据由customerEnd.py内的Commit函数发往商家页面
         一旦有了数据就会显示
 '''
+
+if __name__ == "__main__":
+    inform_kitchen()

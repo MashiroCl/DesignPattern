@@ -23,7 +23,7 @@ def json_to_dict(order):
 # 用户点击提交按钮
 def commit(request):
     order=request.GET.get('data')
-
+    print(order)
 
     temp_order=order
     milk, phone, beef_pizza, coke, fries, chick_pizza, chicken_wing=json_to_dict(order)

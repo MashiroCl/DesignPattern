@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="../static/fonts/iconic/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="../static/css/register.css" type="text/css"/>
     <link rel="stylesheet" href="../static/css/util.css" type="text/css"/>
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -18,24 +20,24 @@
         <form class="register-form validate-register-form" method="post">
             <span class="register-form-title p-b-49">注册</span>
 
-            <div class="wrap-input validate-input m-b-15" data-validate="请输入用户名">
+           <div class="wrap-input validate-input">
                 <input id="username-input" class="input-content" type="text" name="username" placeholder="请输入用户名"
                        autocomplete="off">
                 <span class="focus-input" data-symbol="&#xf206;"></span>
             </div>
 
-            <div class="wrap-input validate-input m-b-15" data-validate="请输入密码">
+            <div class="wrap-input validate-input">
                 <input id="password-input" class="input-content" type="password" name="passwd" placeholder="请输入密码">
                 <span class="focus-input" data-symbol="&#xf190;"></span>
             </div>
 
-            <div class="wrap-input validate-input m-b-15" data-validate="请再次输入密码">
+            <div class="wrap-input validate-input">
                 <input id="verify-password-input" class="input-content" type="password" name="passwd"
                        placeholder="请再次输入密码">
                 <span class="focus-input" data-symbol="&#xf191;"></span>
             </div>
             <div class="wrap-input validate-input m-b-15" data-validate="请再次输入密码">
-                <input id="phone-number" class="input-content" type="password" name="phonenumber"
+                <input id="phone-number" class="input-content" type="text" name="phonenumber"
                        placeholder="请输入手机号">
                 <span class="focus-input" data-symbol="&#xf191;"></span>
             </div>
@@ -58,13 +60,55 @@
             <div class="container-register-form-btn m-t-30">
                 <div class="wrap-register-form-btn">
                     <div class="register-form-bgbtn"></div>
-                    <button id="register-submit" class="register-form-btn">注 册</button>
+                    <button id="register-submit" class="register-form-btn" onclick="cclick_register()">注 册</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
 <script src="../static/vendor/jquery/jquery-3.2.1.min.js"></script>
-<script src="../static/js/register.js"></script>
+{#<script src="../static/js/register.js"></script>#}
+<script>
+
+    function cclick_register(){
+        alert("fea");
+        var data={};
+        var obj=document.getElementById("phone-number").value;
+        data["phone"]=obj;
+        alert(obj);
+
+        obj=document.getElementById("username-input").value;
+        data["username"]=obj;
+
+        obj=document.getElementById("password-input").value;
+        data["password"]=obj;
+
+        var postData =  JSON.stringify(data);
+
+        $.ajax({
+            url: 'http://127.0.0.1:8000/registerCheck/',
+            type: 'GET',
+            data: {'data':postData,
+            },
+            traditional:true,//用传统方式序列化数据
+            success:function(flag){
+                alert(flag)
+            }
+        })
+        alert("frick you");
+
+    }
+
+
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+

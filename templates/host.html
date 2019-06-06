@@ -1,11 +1,13 @@
 <!DOCTYPE html >
 <head>
-    <title> new document </title>
+    <title>businessEnd</title>
     <meta charset="utf-8"/>
-    <script type="text/javascript" src="../static/js/host.js"></script>
+{#    <script type="text/javascript" src="../static/js/host.js"></script>#}
     <style type="text/css">
         @import "../static/css/host.css";
     </style>
+        <script type="text/javascript" src="../static/js/host.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
 
@@ -14,26 +16,29 @@
 
     <div align="center" id="div0" style="display: none" class="dingdan">
         <p id="div0p">111<br/>fea</p>
-        <button onclick="cclick_btn0()"  class="btn" >派送通知</button>
-        <button onclick="cclick_btn0()"  class="btn" >信息联系</button>
-        <button onclick="cclick_btn0()"  class="btn" >电话联系</button>
-        <button onclick="cclick_btn0()"  class="btn" >通知后厨</button>
+        <p id="div0phone">122</p>
+        <button onclick="cclick_btn00()"  class="btn" >派送通知</button>
+        <button onclick="cclick_btn01()"  class="btn" >信息联系</button>
+        <button onclick="cclick_btn02()"  class="btn" >电话联系</button>
+        <button onclick="cclick_btn03()"  class="btn" >通知后厨</button>
     </div>
 
     <div align="center" id="div1" style="display: none;margin-top: 2px;" class="dingdan" >
         <p id="div1p">122</p>
-        <button  onclick="cclick_btn1()" class="btn" >派送通知</button>
-        <button  onclick="cclick_btn1()" class="btn" >信息联系</button>
-        <button  onclick="cclick_btn1()" class="btn" >电话联系</button>
-        <button  onclick="cclick_btn1()" class="btn" >通知后厨</button>
+        <p id="div1phone">122</p>
+        <button  onclick="cclick_btn10()" class="btn" >派送通知</button>
+        <button  onclick="cclick_btn11()" class="btn" >信息联系</button>
+        <button  onclick="cclick_btn12()" class="btn" >电话联系</button>
+        <button  onclick="cclick_btn13()" class="btn" >通知后厨</button>
     </div>
 
     <div align="center" id="div2" style="display: none;margin-top: 2px;" class="dingdan">
         <p id="div2p" >122</p>
-        <button  onclick="cclick_btn2()" class="btn" >派送通知</button>
-        <button  onclick="cclick_btn2()" class="btn" >信息联系</button>
-        <button  onclick="cclick_btn2()" class="btn" >电话联系</button>
-        <button  onclick="cclick_btn2()" class="btn" >通知后厨</button>
+        <p id="div2phone">122</p>
+        <button  onclick="cclick_btn20()" class="btn" >派送通知</button>
+        <button  onclick="cclick_btn21()" class="btn" >信息联系</button>
+        <button  onclick="cclick_btn22()" class="btn" >电话联系</button>
+        <button  onclick="cclick_btn23()" class="btn" >通知后厨</button>
     </div>
 
     <button onclick="cclick()">测试按钮</button>
@@ -45,10 +50,6 @@
 
 </div>
 <script>var List={{data|safe}};
-for(var key in List){
-    alert(key);
-    alert(List[key]);
-}
 
 var flag0 = false;
 var flag1 = false;
@@ -67,11 +68,12 @@ for (var key in List) {
                     phone_number0 = phone_number;
                     var div0 = document.getElementById("div0");
                     div0.style.display = "block";
-
                     var div0p = document.getElementById("div0p");
-
                     div0p.innerHTML = ttext;
-                    alert(div0p.innerText);
+
+                    var div0phone = document.getElementById("div0phone");
+                    div0phone.innerHTML = phone_number ;
+
                     flag0 = true;
 
                 } else if (flag1 == false) {
@@ -83,6 +85,8 @@ for (var key in List) {
                     var div1p = document.getElementById("div1p");
 
                     div1p.innerHTML = ttext;
+                    var div0phone = document.getElementById("div1phone");
+                    div0phone.innerHTML = phone_number ;
                     flag1 = true;
 
                 } else {
@@ -94,6 +98,8 @@ for (var key in List) {
                     var div2p = document.getElementById("div2p");
 
                     div2p.innerHTML = ttext;
+                    var div0phone = document.getElementById("div2phone");
+                    div0phone.innerHTML = phone_number ;
                     flag2 = true;
 
                 }

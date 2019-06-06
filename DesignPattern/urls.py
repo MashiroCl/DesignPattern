@@ -18,12 +18,22 @@ from django.urls import path
 
 import OnlineFastFood.views
 import OnlineFastFood.customerEnd
+import OnlineFastFood.businessEnd
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/',OnlineFastFood.views.customerPage),
+    path('user/',OnlineFastFood.views.customerPage),
     path('commit/', OnlineFastFood.customerEnd.commit),
     path('host/',OnlineFastFood.views.admin_data),
+    path('inform_takefood/',OnlineFastFood.businessEnd.inform_takefood),
+    path('inform_kitchen/',OnlineFastFood.businessEnd.inform_kitchen),
+    path('inform_phone/',OnlineFastFood.businessEnd.inform_phone),
+    path('inform_text/',OnlineFastFood.businessEnd.inform_text),
+    path('index/',OnlineFastFood.views.index),
+    path('register/',OnlineFastFood.views.register),
+    path('registerCheck/', OnlineFastFood.views.registerCheck),
+    path('sign/',OnlineFastFood.views.sign),
+    path('signCheck/',OnlineFastFood.views.signCheck),
 
 
 ]
