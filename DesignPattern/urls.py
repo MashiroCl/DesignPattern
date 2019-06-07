@@ -34,6 +34,7 @@ urlpatterns = [
     path('registerCheck/', OnlineFastFood.views.registerCheck),
     path('sign/',OnlineFastFood.views.sign),
     path('signCheck/',OnlineFastFood.views.signCheck),
+    path('anotherOrder/',OnlineFastFood.customerEnd.anotherOrder),
 
 
 ]

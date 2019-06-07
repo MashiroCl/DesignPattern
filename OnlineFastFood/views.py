@@ -67,7 +67,7 @@ def signCheck(request):
 
     print("lalaallalala")
     #普通用户成功登录
-    return redirect("https://www.baidu.com")
+    return HttpResponse("登陆成功")
 '''
         用户界面能进行的操作：
         1.选择pizza,snack,drink用OrderList.py里的add函数来组成一个套餐
@@ -91,6 +91,5 @@ def admin_data(request):
     dict=json.dumps(dict)
     print("admin_data ",dict)
     return render(request, 'host.html', {'data': dict})
-
 
 

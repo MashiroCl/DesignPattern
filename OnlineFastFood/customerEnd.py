@@ -7,6 +7,7 @@ from django.shortcuts import render_to_response, render
 import sqlite3
 
 global temp_order
+global order_1
 
 def json_to_dict(order):
     order_dict=json.loads(s=order)
@@ -73,19 +74,18 @@ def commit(request):
     elif(chicken_wing==1):
         order_builder.addSnack((OrderList.chickenWings()))
 
+    global order_1
     order_1=order_builder.build()
     DBorder=order_1.show()
 
     DataBase.insert_orderList(data=DBorder,phone=phone)
 
 
-    # #再来一单
-    # order_2=order_1.anotherSameOrder()
-    # order_2.show()
-    # dic={'order':order_1}
-    # print(dic['order'].pizza.getName())
-
-    #发到商家页面
-    # return JsonResponse(dic)
 
     return HttpResponse("您的订单正在处理中请稍后")
+
+def anotherOrder(request):
+    #再来一单
+    global order_1
+    order_2=order_1.anotherSameOrder()
+    order_2.show()
